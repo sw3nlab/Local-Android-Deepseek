@@ -177,10 +177,10 @@ Make a simple chat page (`chat.html`) like:
 <!DOCTYPE html>
 <html>
 <head>
-    <title>TinyLLaMA Chat</title>
+    <title>DeepSeek Chat</title>
 </head>
 <body>
-    <h2>Chat with TinyLLaMA</h2>
+    <h2>Chat with DeepSeek</h2>
     <textarea id="input" rows="4" cols="50"></textarea><br>
     <button onclick="send()">Send</button>
     <pre id="response"></pre>
