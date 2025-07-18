@@ -80,19 +80,7 @@ cd ..
 
 ---
 
-### **2. DeepSeek R1 7B - Requires 8+ GB RAM (Use Q4_0 or Q5_0)**
-
-If your phone is powerful (Snapdragon 8 Gen 1+, or 12GB RAM), try this:
-
-```bash
-mkdir -p models/llama2
-cd models/llama2
-
-# Download a 7B quantized model (Q4_0 = decent quality, smaller size)
-wget https://huggingface.co/unsloth/DeepSeek-R1-Distill-Qwen-7B-GGUF/resolve/main/DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
-
-cd ../../
-```
+ DeepSeek R1 7B - Requires 8+ GB RAM (Use Q4_0 or Q5_0)
 
 ---
 
