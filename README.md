@@ -109,10 +109,6 @@ You’re now ready to run the model using the CLI!
 
 ---
 
-## **Setting Up a Basic Chat UI (Flask-based)**
-
-You can build a simple web-based chat UI running locally on your Android phone.
-
 ## **Final Tips**
 
 - Use **DeepSeek** for best performance on most phones.
