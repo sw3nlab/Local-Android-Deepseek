@@ -11,7 +11,6 @@ This guide walks you step by step through compiling `llama.cpp`, downloading qua
 3. [Cloning and Building llama.cpp](#cloning-and-building-llamacpp)
 4. [Downloading DeepSeek 7B Quantized Models](#downloading-models)
 5. [Running the Model in CLI](#running-the-model)
-6. [Setting Up a Basic Web Chat UI](#setting-up-a-basic-chat-ui)
 7. [Final Thoughts & Tips](#final-tips)
 
 ---
