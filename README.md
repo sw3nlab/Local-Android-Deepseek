@@ -91,7 +91,7 @@ You’re now ready to run the model using the CLI!
 ### **Run DeepSeek:**
 
 ```bash
-./llama-cli -m LLM/DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf -p "Привет, как дела?"
+~llama.cpp/build/bin/llama-cli -m LLM/DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf -p "Привет, как дела?"
 ```
 
 ---
