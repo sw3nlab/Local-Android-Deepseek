@@ -57,7 +57,7 @@ cmake -B build
 cmake --build build --config Release
 ```
 
-This builds the `./main` program that runs GGUF models locally.
+Check `build/bin` directory the `llama-cli` 
 
 ---
 
