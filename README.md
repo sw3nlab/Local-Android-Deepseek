@@ -1,4 +1,4 @@
-# **Run LLaMA Models on Android Locally using Termux + llama.cpp **
+# Run DeepSeek on Android Locally using Termux + llama.cpp 
 
 **Yes, you can run local LLMs on your Android phone — completely offline — using `llama.cpp` in Termux!**  
 This guide walks you step by step through compiling `llama.cpp`, downloading quantized `.gguf` models, running Deepseek R1 7B, and even setting up a simple Chat UI.
@@ -49,11 +49,12 @@ This allows file access from `~/storage` for downloaded models.
 
 ```bash
 # Clone the llama.cpp repo
-git clone https://github.com/ggm/llama.cpp
+git clone https://github.com/ggml-org/llama.cpp
 cd llama.cpp
 
 # Compile the main binary
-make
+cmake -B build
+cmake --build build --config Release
 ```
 
 This builds the `./main` program that runs GGUF models locally.
@@ -64,7 +65,7 @@ This builds the `./main` program that runs GGUF models locally.
 
 ### **1. DeepSeek R1 - Great for Phones **
 
-DeepSeek is super multilang, lightweight and works well on mid-range phones.
+DeepSeek is multilang, lightweight and works well on mid-range phones.
 
 **Download command:**
 
@@ -89,7 +90,7 @@ mkdir -p models/llama2
 cd models/llama2
 
 # Download a 7B quantized model (Q4_0 = decent quality, smaller size)
-wget https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGUF/resolve/main/llama-2-7b-chat.Q4_0.gguf
+wget https://huggingface.co/unsloth/DeepSeek-R1-Distill-Qwen-7B-GGUF/resolve/main/DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
 
 cd ../../
 ```
@@ -100,27 +101,11 @@ cd ../../
 
 You’re now ready to run the model using the CLI!
 
-### **Run TinyLLaMA:**
+### **Run DeepSeek:**
 
 ```bash
-./main -m models/tinyllama/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf -p "Hello! Who are you?"
+./llama-cli -m LLM/DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf -p "Привет, как дела?"
 ```
-
-### **Run LLaMA 2 7B (if phone can handle it):**
-
-```bash
-./main -m models/llama2/llama-2-7b-chat.Q4_0.gguf -p "What is the capital of France?"
-```
-
----
-
-### **Run in Interactive Chat Mode**
-
-```bash
-./main -m models/tinyllama/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf -i
-```
-
-You can now type prompts interactively.
 
 ---
 
@@ -156,7 +141,7 @@ def chat():
 
     # Call llama.cpp with the prompt
     result = subprocess.run(
-        ["./main", "-m", "models/tinyllama/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf", "-p", prompt],
+        ["./main", "-m", "models/tinyllama/DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf", "-p", prompt],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         text=True
@@ -223,9 +208,9 @@ Open it in a browser and chat locally!
 
 ## **Final Tips**
 
-- Use **TinyLLaMA** for best performance on most phones.
+- Use **DeepSeek** for best performance on most phones.
 - Use **`-n 256`** to control number of output tokens (example: `-n 256 -p "Explain gravity"`).
-- Monitor RAM usage — LLaMA 7B needs around 4–6 GB RAM for Q4.
+- Monitor RAM usage — Deepseek 7B needs around 4–6 GB RAM for Q4.
 - You can create wrapper scripts or integrate with Android web UIs using Termux:API if you want!
 
 ---
