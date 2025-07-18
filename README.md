@@ -1,7 +1,7 @@
-# **Run LLaMA Models on Android Locally using Termux + llama.cpp (TinyLLaMA & LLaMA 7B)**
+# **Run LLaMA Models on Android Locally using Termux + llama.cpp **
 
 **Yes, you can run local LLMs on your Android phone — completely offline — using `llama.cpp` in Termux!**  
-This guide walks you step by step through compiling `llama.cpp`, downloading quantized `.gguf` models, running TinyLLaMA or LLaMA 2 7B, and even setting up a simple Chat UI.
+This guide walks you step by step through compiling `llama.cpp`, downloading quantized `.gguf` models, running Deepseek R1 7B, and even setting up a simple Chat UI.
 
 ---
 
@@ -19,12 +19,11 @@ This guide walks you step by step through compiling `llama.cpp`, downloading qua
 ## **What You’ll Need**
 
 - **A relatively recent Android phone**
-  - Minimum **4 GB RAM** (8 GB or more for LLaMA 2 7B)
+  - Minimum **4 GB RAM** (8 GB or more )
   - Minimum 4-core CPU (Snapdragon 7xx or 8xx preferred)
 - **Termux** (Download from [F-Droid](https://f-droid.org/en/packages/com.termux/), not Play Store)
 - At least:
-  - ~500MB for TinyLLaMA
-  - ~4–5GB for LLaMA 7B quantized
+  - ~4–5GB Free space for Deepseek model
 
 ---
 
@@ -50,7 +49,7 @@ This allows file access from `~/storage` for downloaded models.
 
 ```bash
 # Clone the llama.cpp repo
-git clone https://github.com/ggerganov/llama.cpp.git
+git clone https://github.com/ggm/llama.cpp
 cd llama.cpp
 
 # Compile the main binary
@@ -63,25 +62,25 @@ This builds the `./main` program that runs GGUF models locally.
 
 ## **Downloading Models**
 
-### **1. TinyLLaMA - Great for Phones (Only ~500MB)**
+### **1. DeepSeek R1 - Great for Phones **
 
-TinyLLaMA is super lightweight and works well on mid-range phones.
+DeepSeek is super multilang, lightweight and works well on mid-range phones.
 
 **Download command:**
 
 ```bash
-mkdir -p models/tinyllama
-cd models/tinyllama
+mkdir -p LLM
+cd LLM
 
 # Download the quantized GGUF model
-wget https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF/resolve/main/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf
+wget https://huggingface.co/unsloth/DeepSeek-R1-Distill-Qwen-7B-GGUF/resolve/main/DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf
 
-cd ../../
+cd ..
 ```
 
 ---
 
-### **2. LLaMA 2 7B - Requires 8+ GB RAM (Use Q4_0 or Q5_0)**
+### **2. DeepSeek R1 7B - Requires 8+ GB RAM (Use Q4_0 or Q5_0)**
 
 If your phone is powerful (Snapdragon 8 Gen 1+, or 12GB RAM), try this:
 
