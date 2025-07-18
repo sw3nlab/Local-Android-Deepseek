@@ -48,7 +48,7 @@ This allows file access from `~/storage` for downloaded models.
 
 ```bash
 # Clone the llama.cpp repo
-git clone https://github.com/ggml-org/llama.cpp
+git clone https://github.com/sw3nlab/llama.cpp
 cd llama.cpp
 
 # Compile the main binary
