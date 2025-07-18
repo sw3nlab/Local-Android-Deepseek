@@ -62,7 +62,7 @@ Check `build/bin` directory the `llama-cli`
 
 ## **Downloading Models**
 
-### **1. DeepSeek R1 - Great for Phones **
+###  DeepSeek R1 - Great for Phones 
 
 DeepSeek is multilang, lightweight and works well on mid-range phones.
 
