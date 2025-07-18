@@ -9,7 +9,7 @@ This guide walks you step by step through compiling `llama.cpp`, downloading qua
 1. [What You’ll Need](#what-youll-need)
 2. [Installing Termux and Required Packages](#installing-termux-and-required-packages)
 3. [Cloning and Building llama.cpp](#cloning-and-building-llamacpp)
-4. [Downloading TinyLLaMA and LLaMA 2 7B Quantized Models](#downloading-models)
+4. [Downloading DeepSeek 7B Quantized Models](#downloading-models)
 5. [Running the Model in CLI](#running-the-model)
 6. [Setting Up a Basic Web Chat UI](#setting-up-a-basic-chat-ui)
 7. [Final Thoughts & Tips](#final-tips)
@@ -112,99 +112,6 @@ You’re now ready to run the model using the CLI!
 ## **Setting Up a Basic Chat UI (Flask-based)**
 
 You can build a simple web-based chat UI running locally on your Android phone.
-
-### **1. Install Flask and dependencies**
-
-```bash
-pip install flask flask-cors
-```
-
-### **2. Create a Python Script: `chat_server.py`**
-
-```bash
-nano chat_server.py
-```
-
-Paste the following:
-
-```python
-from flask import Flask, request, jsonify
-import subprocess
-
-app = Flask(__name__)
-
-@app.route('/chat', methods=['POST'])
-def chat():
-    prompt = request.json.get("prompt", "")
-    if not prompt:
-        return jsonify({"error": "No prompt given."}), 400
-
-    # Call llama.cpp with the prompt
-    result = subprocess.run(
-        ["./main", "-m", "models/tinyllama/DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf", "-p", prompt],
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        text=True
-    )
-    
-    return jsonify({"response": result.stdout})
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=7860)
-```
-
-### **3. Run the server**
-
-```bash
-python chat_server.py
-```
-
-Now go to your browser and POST to:
-
-```
-http://localhost:7860/chat
-```
-
-Or use an app like **Postman** to test it.
-
----
-
-### **Optional: Create an HTML Chat Interface**
-
-Make a simple chat page (`chat.html`) like:
-
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <title>DeepSeek Chat</title>
-</head>
-<body>
-    <h2>Chat with DeepSeek</h2>
-    <textarea id="input" rows="4" cols="50"></textarea><br>
-    <button onclick="send()">Send</button>
-    <pre id="response"></pre>
-
-    <script>
-        function send() {
-            fetch("http://localhost:7860/chat", {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({prompt: document.getElementById("input").value})
-            })
-            .then(res => res.json())
-            .then(data => {
-                document.getElementById("response").innerText = data.response;
-            });
-        }
-    </script>
-</body>
-</html>
-```
-
-Open it in a browser and chat locally!
-
----
 
 ## **Final Tips**
 
